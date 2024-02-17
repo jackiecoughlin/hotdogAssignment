@@ -1,0 +1,82 @@
+<html> 
+<meta charset="utf-8">
+<link rel="stylesheet" href="mystyle.css">
+
+<center><h1 style = "font-size: 50;">Checkout</h1></center>
+<center><img src="receipt.jpg"; width = 200;></center>
+
+<script>
+const dogConst = 4.65; 
+const friesConst = 3.75; 
+const drinksCost = 1.89; 
+
+var numDogs; 
+numDogs = prompt("How many hot dogs do you want"); 
+var numFries; 
+numFries = prompt("How many fries do you want?"); 
+var numSoda; 
+numSoda = prompt("How many sodas do you want?"); 
+
+var x = Number(numDogs); 
+var y = Number(numFries); 
+var z = Number(numSoda);
+
+function showMoney(amount){
+    let roundedAmount = (Math.round(amount*100))/100; 
+    if (roundedAmount * 100 % 100 == 0){
+        stringAmount = roundedAmount + '.00'; 
+    }
+    else if ((roundedAmount * 100) % 10 == 0){
+        stringAmount = roundedAmount + '0'; 
+    } else {
+        stringAmount = roundedAmount + ""; 
+    }
+    return stringAmount; 
+}
+
+//Calculate individual group prices
+var dogPrice = x * dogConst; 
+var friesPrice = y * friesConst; 
+var sodaPrice = z * drinksCost; 
+
+//Round Prices using showMoneyFunction
+var roundedDog = showMoney(dogPrice); 
+var roundedFries = showMoney(friesPrice); 
+var roundedSodas = showMoney(sodaPrice); 
+//Pre Discount Subtotal
+rd2 = Number(roundedDog); 
+rf2 = Number(roundedFries); 
+rs2 = Number(roundedSodas); 
+var preDisSub = rd2 + rf2 + rs2; 
+preDisSub = showMoney(preDisSub); 
+
+//Discount Subtotal
+var postDisSub = preDisSub; 
+if (preDisSub >= 25){
+    postDisSub = preDisSub*0.9; 
+    postDisSub = showMoney(postDisSub); 
+}
+
+//Mass Tax Amount 
+taxAmount = postDisSub * 0.0625; 
+taxAmount = showMoney(taxAmount); 
+
+//Final Amount 
+finalAmount = postDisSub * 0.9375; 
+finalAmount = showMoney(finalAmount); 
+ </script>
+
+<center>
+<br><br>
+<script> document.write("Order Information: " + numDogs + " hot dogs, " + numFries + " fries, " + numSoda + " sodas");</script><br><br>
+<script> document.write("Hot Dog Cost: " + roundedDog); </script> <br><br>
+<script> document.write("Fries Cost: " + roundedFries); </script> <br><br>
+<script> document.write("Drinks Cost: " + roundedSodas); </script> <br><br>
+<script> document.write("Subtotal before discount: " + preDisSub)</script><br><br>
+<script>document.write("Subtotal after discount: " + postDisSub)</script><br><br>
+<script> document.write("Tax Amount: " + taxAmount)</script><br><br>
+<script>document.write("Final Amount after Tax: " + finalAmount)</script><br><br>
+</center>
+<br><br><br><br>
+
+</html> 
